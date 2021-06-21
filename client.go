@@ -88,15 +88,15 @@ func (c *Client) sendEvents(app string, namespace string, events []string, tags 
 }
 
 func (c *Client) extractTags(tags []string, permittedTags []string, metrics map[string]logValue) []string {
-	for _, mk := range permittedTags {
-		if c.ExcludedTags[mk] {
-			continue
-		}
-		if v, ok := metrics[mk]; ok {
-			tags = append(tags, mk+":"+v.Val)
-		}
-	}
-	sort.Strings(tags)
+	// for _, mk := range permittedTags {
+	// 	if c.ExcludedTags[mk] {
+	// 		continue
+	// 	}
+	// 	if v, ok := metrics[mk]; ok {
+	// 		tags = append(tags, mk+":"+v.Val)
+	// 	}
+	// }
+	// sort.Strings(tags)
 	return tags
 }
 
