@@ -1,4 +1,4 @@
-[![Build Status](https://github.com/apiaryio/heroku-datadog-drain-golang/workflows/Go/badge.svg)](https://github.com/apiaryio/heroku-datadog-drain-golang/actions/workflows/go.yml)
+ [![Build Status](https://github.com/apiaryio/heroku-datadog-drain-golang/workflows/Go/badge.svg)](https://github.com/apiaryio/heroku-datadog-drain-golang/actions/workflows/go.yml)
 
 # Heroku Datadog Drain
 
