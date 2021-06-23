@@ -239,6 +239,7 @@ func (c *Client) sendMetric(metricType string, metricName string, value float64,
 			return errors.New("Unknown metric type" + metricType)
 		}
 	}
+	return errors.New("Unwanted metric")
 }
 
 func (c *Client) sendMetricsWithTags(data *logMetrics) {
