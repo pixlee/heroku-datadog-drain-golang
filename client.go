@@ -112,7 +112,6 @@ func addStatusFamilyToTags(data *logMetrics, tags []string) []string {
 
 func (c *Client) sendRouterMsg(data *logMetrics) {
 	tags := c.extractTags(*data.tags, routerMetricsKeys, data.metrics)
-	tags = addStatusFamilyToTags(data, tags)
 
 	log.WithFields(log.Fields{
 		"app":    *data.app,
