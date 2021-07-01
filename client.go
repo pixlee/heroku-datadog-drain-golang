@@ -65,9 +65,11 @@ func (c *Client) sendToStatsd(in chan *logMetrics) {
 		// } else if data.typ == scalingMsg {
 		// 	c.sendEvents(*data.app, "heroku", data.events, *data.tags)
 		// 	c.sendScalingMsg(data)
-		// } else if data.typ == metricsTag {
-		// 	c.sendMetricsWithTags(data)
-		// } else if data.typ == releaseMsg {
+		// }
+		else if data.typ == metricsTag {
+			c.sendMetricsWithTags(data)
+		}
+		// else if data.typ == releaseMsg {
 		// 	c.sendEvents(*data.app, "app", data.events, *data.tags)
 		// } else {
 		// 	log.WithField("type", data.typ).Warn("Unknown log message")
