@@ -185,17 +185,19 @@ func (c *Client) sendSampleMsg(data *logMetrics) {
 		if strings.Index(k, "#") != -1 {
 			m := strings.Replace(strings.Split(k, "#")[1], "_", ".", -1)
 			vnum, err := strconv.ParseFloat(v.Val, 10)
-			if err == nil {
-				err = c.Gauge(*data.prefix+"heroku.dyno."+m, vnum, tags, sampleRate)
-				if err != nil {
-					log.WithField("error", err).Info("Failed to send Gauge")
+			if (strings.Contains(m, "load")) {
+				if err == nil {
+					err = c.Gauge(*data.prefix+"heroku.dyno."+m, vnum, tags, sampleRate)
+					if err != nil {
+						log.WithField("error", err).Info("Failed to send Gauge")
+					}
+				} else {
+					log.WithFields(log.Fields{
+						"type":   "sample",
+						"metric": k,
+						"err":    err,
+					}).Info("Could not parse metric value")
 				}
-			} else {
-				log.WithFields(log.Fields{
-					"type":   "sample",
-					"metric": k,
-					"err":    err,
-				}).Info("Could not parse metric value")
 			}
 		}
 	}
