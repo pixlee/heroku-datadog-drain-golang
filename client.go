@@ -57,9 +57,10 @@ func (c *Client) sendToStatsd(in chan *logMetrics) {
 			"prefix": data.prefix,
 		}).Debug("logMetrics received")
 
-		// if data.typ == routerMsg {
-		// 	c.sendRouterMsg(data)
-		// } else if data.typ == sampleMsg {
+		if data.typ == routerMsg {
+			c.sendRouterMsg(data)
+		}
+		// else if data.typ == sampleMsg {
 		// 	c.sendSampleMsg(data)
 		// } else if data.typ == scalingMsg {
 		// 	c.sendEvents(*data.app, "heroku", data.events, *data.tags)
