@@ -149,18 +149,18 @@ func (c *Client) sendRouterMsg(data *logMetrics) {
 		return
 	}
 	// https://devcenter.heroku.com/articles/http-routing
-	err = c.Histogram(*data.prefix+"heroku.router.response.bytes", bytes, tags, sampleRate)
-	if err != nil {
-		log.WithField("error", err).Info("Failed to send Histogram")
-	}
+	// err = c.Histogram(*data.prefix+"heroku.router.response.bytes", bytes, tags, sampleRate)
+	// if err != nil {
+	// 	log.WithField("error", err).Info("Failed to send Histogram")
+	// }
 	err = c.Histogram(*data.prefix+"heroku.router.request.connect", conn, tags, sampleRate)
 	if err != nil {
 		log.WithField("error", err).Info("Failed to send Histogram")
 	}
-	err = c.Histogram(*data.prefix+"heroku.router.request.service", serv, tags, sampleRate)
-	if err != nil {
-		log.WithField("error", err).Info("Failed to send Histogram")
-	}
+	// err = c.Histogram(*data.prefix+"heroku.router.request.service", serv, tags, sampleRate)
+	// if err != nil {
+	// 	log.WithField("error", err).Info("Failed to send Histogram")
+	// }
 	if data.metrics["at"].Val == "error" {
 		err = c.Count(*data.prefix+"heroku.router.error", 1, tags, 0.1)
 		if err != nil {
