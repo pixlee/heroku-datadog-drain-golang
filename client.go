@@ -129,25 +129,25 @@ func (c *Client) sendRouterMsg(data *logMetrics) {
 		}).Info("Could not parse metric value")
 		return
 	}
-	serv, err := strconv.ParseFloat(data.metrics["service"].Val, 10)
-	if err != nil {
-		log.WithFields(log.Fields{
-			"type":   "router",
-			"metric": "service",
-			"err":    err,
-		}).Info("Could not parse metric value")
-		return
-	}
+	// serv, err := strconv.ParseFloat(data.metrics["service"].Val, 10)
+	// if err != nil {
+	// 	log.WithFields(log.Fields{
+	// 		"type":   "router",
+	// 		"metric": "service",
+	// 		"err":    err,
+	// 	}).Info("Could not parse metric value")
+	// 	return
+	// }
 
-	bytes, err := strconv.ParseFloat(data.metrics["bytes"].Val, 10)
-	if err != nil {
-		log.WithFields(log.Fields{
-			"type":   "router",
-			"metric": "bytes",
-			"err":    err,
-		}).Info("Could not parse metric value")
-		return
-	}
+	// bytes, err := strconv.ParseFloat(data.metrics["bytes"].Val, 10)
+	// if err != nil {
+	// 	log.WithFields(log.Fields{
+	// 		"type":   "router",
+	// 		"metric": "bytes",
+	// 		"err":    err,
+	// 	}).Info("Could not parse metric value")
+	// 	return
+	// }
 	// https://devcenter.heroku.com/articles/http-routing
 	// err = c.Histogram(*data.prefix+"heroku.router.response.bytes", bytes, tags, sampleRate)
 	// if err != nil {
