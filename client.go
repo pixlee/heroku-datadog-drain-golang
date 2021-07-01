@@ -21,10 +21,10 @@ const (
 	releaseMsg
 )
 
-var routerMetricsKeys = []string{"dyno", "method", "status", "path", "host", "code", "desc", "at"}
-var sampleMetricsKeys = []string{"source"}
-var scalingMetricsKeys = []string{"mailer", "web"}
-var customMetricsKeys = []string{"media_type", "output_type", "route"}
+var routerMetricsKeys = []string{}
+var sampleMetricsKeys = []string{}
+var scalingMetricsKeys = []string{}
+var customMetricsKeys = []string{}
 
 type Client struct {
 	*statsd.Client
