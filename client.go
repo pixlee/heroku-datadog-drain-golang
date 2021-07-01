@@ -59,16 +59,16 @@ func (c *Client) sendToStatsd(in chan *logMetrics) {
 
 		if data.typ == routerMsg {
 			c.sendRouterMsg(data)
+		} else if data.typ == metricsTag {
+			c.sendMetricsWithTags(data)
 		}
+
 		// else if data.typ == sampleMsg {
 		// 	c.sendSampleMsg(data)
 		// } else if data.typ == scalingMsg {
 		// 	c.sendEvents(*data.app, "heroku", data.events, *data.tags)
 		// 	c.sendScalingMsg(data)
 		// }
-		else if data.typ == metricsTag {
-			c.sendMetricsWithTags(data)
-		}
 		// else if data.typ == releaseMsg {
 		// 	c.sendEvents(*data.app, "app", data.events, *data.tags)
 		// } else {
