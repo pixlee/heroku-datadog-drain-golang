@@ -91,6 +91,16 @@ func (c *Client) sendEvents(app string, namespace string, events []string, tags 
 	}
 }
 
+func remove(slice []string, s string) []string {
+	for i, v := range slice {
+	    if v == s {
+	        slice = append(slice[:i], slice[i+1:]...)
+	        break
+	    }
+	}
+	return slice
+}
+
 func (c *Client) extractTags(tags []string, permittedTags []string, metrics map[string]logValue) []string {
 	// for _, mk := range permittedTags {
 	// 	if c.ExcludedTags[mk] {
@@ -102,14 +112,6 @@ func (c *Client) extractTags(tags []string, permittedTags []string, metrics map[
 	// }
 	// sort.Strings(tags)
 
-	func remove(slice []string, s string) []string {
-		for i, v := range slice {
-		    if v == s {
-		        slice = append(slice[:i], slice[i+1:]...)
-		        break
-		    }
-		}
-	}
 	//Do removals here
 
 	tags := remove(tags, "type:scheduler")
