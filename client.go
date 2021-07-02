@@ -101,7 +101,12 @@ func (c *Client) extractTags(tags []string, permittedTags []string, metrics map[
 	// 	}
 	// }
 	// sort.Strings(tags)
+
+	func remove(slice []string, s string) []string {
+	    return append(slice[:s], slice[s+1:]...)
+	}
 	//Do removals here
+
 	tags := remove(tags, "type:scheduler")
 	tags := remove(tags, "type:web")
 	tags := remove(tags, "type:worker")
