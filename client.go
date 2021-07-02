@@ -101,6 +101,10 @@ func (c *Client) extractTags(tags []string, permittedTags []string, metrics map[
 	// 	}
 	// }
 	// sort.Strings(tags)
+	//Do removals here
+	tags := remove(tags, "type:scheduler")
+	tags := remove(tags, "type:web")
+	tags := remove(tags, "type:worker")
 	return tags
 }
 
@@ -173,8 +177,7 @@ func (c *Client) sendRouterMsg(data *logMetrics) {
 }
 
 func (c *Client) sendSampleMsg(data *logMetrics) {
-	tags := []string{}
-	//c.extractTags(*data.tags, sampleMetricsKeys, data.metrics)
+	tags := c.extractTags(*data.tags, sampleMetricsKeys, data.metrics)
 
 	log.WithFields(log.Fields{
 		"app":    *data.app,
