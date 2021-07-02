@@ -114,9 +114,9 @@ func (c *Client) extractTags(tags []string, permittedTags []string, metrics map[
 
 	//Do removals here
 
-	tags := remove(tags, "type:scheduler")
-	tags := remove(tags, "type:web")
-	tags := remove(tags, "type:worker")
+	tags = remove(tags, "type:scheduler")
+	tags = remove(tags, "type:web")
+	tags = remove(tags, "type:worker")
 	return tags
 }
 
