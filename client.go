@@ -173,7 +173,8 @@ func (c *Client) sendRouterMsg(data *logMetrics) {
 }
 
 func (c *Client) sendSampleMsg(data *logMetrics) {
-	tags := c.extractTags(*data.tags, sampleMetricsKeys, data.metrics)
+	tags := []string{}
+	//c.extractTags(*data.tags, sampleMetricsKeys, data.metrics)
 
 	log.WithFields(log.Fields{
 		"app":    *data.app,
