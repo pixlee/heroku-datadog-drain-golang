@@ -103,7 +103,12 @@ func (c *Client) extractTags(tags []string, permittedTags []string, metrics map[
 	// sort.Strings(tags)
 
 	func remove(slice []string, s string) []string {
-	    return append(slice[:s], slice[s+1:]...)
+		for i, v := range slice {
+		    if v == s {
+		        slice = append(slice[:i], slice[i+1:]...)
+		        break
+		    }
+		}
 	}
 	//Do removals here
 
